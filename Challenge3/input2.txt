@@ -1,0 +1,49 @@
+clear X;
+incr X;
+incr X;
+def Sub; //3
+clear O;
+incr O;
+end;  //6
+clear Y;
+incr Y;
+call Sub; //9
+incr Y;
+incr Y;
+clear Z;
+
+
+if X not 2; 
+clear A;
+if X not 2; 
+clear B;
+else;       
+clear C;
+end;
+else;       
+clear D;
+end;
+
+while X not 0 do;   
+   clear W;
+   while Y not 0 do;
+      incr Z;
+      incr W;
+      decr Y;
+   end;
+   while W not 0 do;
+   incr Y;
+   decr W;
+   end;
+   decr X;
+end;
+
+add Z Y D;
+sub Z Y D;
+div Z Y D;
+mod Z Y D;
+muli Z Y D;
+exp Z Y D;
+def Sub;
+clear O;
+end;
