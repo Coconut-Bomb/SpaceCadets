@@ -100,7 +100,6 @@ public class BBInterpreter {
                     case "def":
                         createSubroutine();
                         System.out.println(subroutinesMap.keySet());
-                        System.out.println(subroutinesMap.get("Sub"));
                         break;
                     case "call":
                         callSubroutine();
@@ -141,32 +140,6 @@ public class BBInterpreter {
             value2 = vars.getVar(statmentPart3);
         }
         //System.out.println( value1 + " " + condition + " " + value2);
-        /*
-        String varName = statmentPart1;
-        String condition = statmentPart2;
-        int value = 0;
-
-
-
-
-        try{
-            value = Integer.parseInt(statmentPart3);
-            System.out.println("part3 parsed as Int");
-        }catch(Exception e){
-            try{
-                value = vars.getVar(statmentPart3);
-            }catch (NullPointerException ee){
-                System.out.println("No variable '" + varName + "' found. Error at line " + instructionPointer);
-                System.exit(0);
-            }
-        }
-        int var = 0;
-        try{
-            var = vars.getVar(varName);
-        }catch (NullPointerException e){
-            System.out.println("No variable '" + varName + "' found. Error at line " + instructionPointer);
-            System.exit(0);
-        }*/
         switch (condition){
             case "not":
                 return (value1 != value2);
@@ -322,99 +295,4 @@ public class BBInterpreter {
 
 }
 
-
-/*
-
-            private int evalStatement(String str) {
-		str = str.trim();
-
-		// Get rid of paranthesis
-		if (str.indexOf("(") != -1) {
-			int index = str.indexOf("(");
-			int parenthesisOpened = 0;
-			for (; index < str.length(); index++) {
-				if (str.charAt(index) == '(') parenthesisOpened++;
-				if (str.charAt(index) == ')') parenthesisOpened--;
-				if (parenthesisOpened == 0) break;
-			}
-
-			if (index == str.length()) {
-				System.out.println("Line " + PC + ": Unclosed paranthesis");
-				System.exit(1);
-			}
-
-			str = str.substring(0, str.indexOf("(")) + evalStatement(str.substring(str.indexOf("(") + 1, index)) + str.substring(index + 1);
-		}
-
-		try {
-			return Integer.parseInt(str);
-		} catch (NumberFormatException e) {
-			if (vars.containsKey(str)) return getVar(str);
-
-			String operands = "><=|&/%+-"; // This order defines priority
-        String leftstr = new String();
-        String rightstr = new String();
-        char op = '\0';
-
-        for (int i = 0; i < operands.length(); i++) {
-        int index = str.indexOf(operands.charAt(i));
-        if (index == -1) continue;
-
-        op = operands.charAt(i);
-        leftstr = str.substring(0, index);
-        rightstr = str.substring(index + 1);
-        }
-
-        int left = evalStatement(leftstr);
-        int right = evalStatement(rightstr);
-
-        switch (op) {
-        case '|': return ((left != 0) || (right != 0)) ? 1 : 0;
-        case '&': return ((left != 0) && (right != 0)) ? 1 : 0;
-        case '>': return (left > right) ? 1 : 0;
-        case '<': return (left < right) ? 1 : 0;
-        case '=': return (left == right) ? 1 : 0;
-        case '+': return left + right;
-        case '-': return left - right;
-        case '*': return left * right;
-        case '/': return left / right;
-        case '%': return left % right;
-default: {
-        System.out.println("Line " + PC + ": Unknown operator " + op);
-        System.exit(1);
-        }
-        }
-        }
-
-        System.out.println("Line " + PC + ": Invalid expression " + str);
-        System.exit(1);
-        return 0;
-
-
-           case "clear": setVar(cmd[1], 0); break;
-			case "incr": setVar(cmd[1], getVar(cmd[1]) + 1); break;
-			case "decr": setVar(cmd[1], getVar(cmd[1]) - 1); break;
-			case "read": {
-				String inp = System.console().readLine();
-				while (inp.length() == 0) { inp = System.console().readLine(); }
-				setVar(cmd[1], getInt(inp));
-			} break;
-			case "set": setVar(cmd[1], evalStatement(strJoin(cmd, 2, cmd.length))); break;
-			case "print": {
-				String msg = strJoin(cmd, 1, cmd.length);
-
-				if (msg.charAt(0) == '"' && msg.charAt(msg.length() - 1) == '"') {
-					System.out.println(msg.substring(1, msg.length() - 1));
-				} else {
-					System.out.println(getVar(cmd[1]));
-				}
-			} break;
-
-			case "while": whileList.addFirst(PC); if (!evalBlockStatement(cmd)) skipBlock ("while", "end"); break;
-			case "end": PC = whileList.getFirst() - 1; whileList.removeFirst(); break;
-			//case "if": ifList.addFirst(PC); if (!evalBlockStatement(cmd)) skipBlock ("if", "fi"); break;
-			//case "else": if (evalBlockStatement()) break;
-			//case "fi": ifList.removeFirst(); break;
-			default: System.out.println("Unknown instruction: " + cmd[0]);
-		}
 */
