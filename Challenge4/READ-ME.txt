@@ -1,0 +1,1 @@
+This is a Client Sever chat, it can be used to connect multiple clients to a server and provides a simple chat service. 
